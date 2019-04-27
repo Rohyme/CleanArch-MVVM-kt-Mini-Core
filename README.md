@@ -1,0 +1,1 @@
+# CleanArch-MVVM-kt-Mini-Core
