@@ -38,6 +38,8 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
 
+
+
     //Koin
     implementation 'org.koin:koin-android:2.0.0-rc-2'
     // or Koin for Lifecycle scoping
@@ -55,4 +57,5 @@ dependencies {
 
     //prettyState
     implementation 'com.github.Rohyme:PrettyStateView:3.0.0'
+    implementation project(path: ':prettylistlib')
 }
