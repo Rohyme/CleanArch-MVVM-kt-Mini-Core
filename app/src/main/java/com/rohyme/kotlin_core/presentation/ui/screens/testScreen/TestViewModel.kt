@@ -4,19 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.rohyme.kotlin_core.domain.interactors.useCases.GetTestPostsUseCase
 import com.rohyme.kotlin_core.presentation.ui.base.BaseViewModel
-import com.rohyme.kotlin_core.presentation.utils.StateView
 import com.rohyme.kotlin_core.presentation.utils.StateViewEvent
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.actor
-import kotlinx.coroutines.channels.consumeEach
 
 /**
  *git
  * @Auther Rohyme
  */
-@ObsoleteCoroutinesApi
 class TestViewModel(private val getPostsUseCase : GetTestPostsUseCase): BaseViewModel() {
     override val coroutineName: String
         get() = "TestViewModel"
@@ -25,10 +18,10 @@ class TestViewModel(private val getPostsUseCase : GetTestPostsUseCase): BaseView
     val getPostsEvent : LiveData<StateViewEvent>
     get() = _postsEvent
 
-    fun fetchPosts() =  actor<StateView>(Dispatchers.Main,Channel.CONFLATED){
-        getPostsUseCase.execute().consumeEach {
-            _postsEvent.postValue(StateViewEvent(it))
-        }
+     fun fetchPosts(){
+         _postsEvent.executeWithState(getPostsUseCase)
+     }
+    fun retryGettingPosts() {
+        fetchPosts()
     }
-
 }
