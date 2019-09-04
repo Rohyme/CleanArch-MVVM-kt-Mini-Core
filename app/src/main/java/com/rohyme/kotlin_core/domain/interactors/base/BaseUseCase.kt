@@ -1,7 +1,6 @@
 package com.rohyme.kotlin_core.domain.interactors.base
 
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  *

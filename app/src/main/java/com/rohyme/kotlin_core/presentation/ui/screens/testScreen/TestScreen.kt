@@ -13,10 +13,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TestScreen : AppCompatActivity() {
 
-    @ObsoleteCoroutinesApi
     val testVM : TestViewModel by viewModel()
 
-    @ObsoleteCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_screen)
